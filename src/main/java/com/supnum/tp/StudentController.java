@@ -1,7 +1,6 @@
 package com.supnum.tp;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -18,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/students")
+@SuppressWarnings("null")
 public class StudentController {
 
     @Autowired
@@ -81,6 +81,16 @@ public class StudentController {
             throw new RuntimeException("Etudiant deja inscrit dans ce cours");
         }
         student.getCourses().add(course);
+        return studentRepository.save(student);
+    }
+
+    @DeleteMapping("/{studentId}/courses/{courseId}")
+    public Student desinscrire(@PathVariable @NonNull Long studentId, @PathVariable @NonNull Long courseId) {
+        Student student = studentRepository.findById(studentId)
+                .orElseThrow(() -> new RuntimeException("Student not found"));
+        Course course = courseRepository.findById(courseId)
+                .orElseThrow(() -> new RuntimeException("Course not found"));
+        student.getCourses().remove(course);
         return studentRepository.save(student);
     }
 }
