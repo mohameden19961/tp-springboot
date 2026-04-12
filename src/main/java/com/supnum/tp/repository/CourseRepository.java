@@ -1,6 +1,6 @@
-package com.project.repository;
+package com.supnum.tp.repository;
 
-import com.project.entity.Course;
+import com.supnum.tp.entity.Course;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.domain.*;
 import java.util.List;

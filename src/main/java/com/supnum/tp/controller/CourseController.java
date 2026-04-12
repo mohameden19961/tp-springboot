@@ -1,9 +1,9 @@
-package com.project.controller;
+package com.supnum.tp.controller;
 
-import com.project.dto.request.CourseDTO;
-import com.project.entity.Course;
-import com.project.entity.Student;
-import com.project.service.CourseService;
+import com.supnum.tp.dto.request.CourseDTO;
+import com.supnum.tp.entity.Course;
+import com.supnum.tp.entity.Student;
+import com.supnum.tp.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.lang.NonNull;

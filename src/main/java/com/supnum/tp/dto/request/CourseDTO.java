@@ -1,4 +1,4 @@
-package com.project.dto.request;
+package com.supnum.tp.dto.request;
 
 public class CourseDTO {
     private String title;

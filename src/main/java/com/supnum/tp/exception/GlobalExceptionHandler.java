@@ -1,4 +1,4 @@
-package com.supnum.tp;
+package com.supnum.tp.exception;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

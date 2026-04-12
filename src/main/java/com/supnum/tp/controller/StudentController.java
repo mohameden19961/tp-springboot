@@ -1,8 +1,8 @@
-package com.project.controller;
+package com.supnum.tp.controller;
 
-import com.project.dto.request.StudentDTO;
-import com.project.entity.Student;
-import com.project.service.StudentService;
+import com.supnum.tp.dto.request.StudentDTO;
+import com.supnum.tp.entity.Student;
+import com.supnum.tp.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.lang.NonNull;

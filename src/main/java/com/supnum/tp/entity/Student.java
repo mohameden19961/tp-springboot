@@ -1,4 +1,4 @@
-package com.project.entity;
+package com.supnum.tp.entity;
 
 import java.util.List;
 import jakarta.persistence.*;

@@ -1,10 +1,10 @@
-package com.project.service;
+package com.supnum.tp.service;
 
-import com.project.dto.request.CourseDTO;
-import com.project.entity.Course;
-import com.project.entity.Student;
-import com.project.repository.CourseRepository;
-import com.project.repository.StudentRepository;
+import com.supnum.tp.dto.request.CourseDTO;
+import com.supnum.tp.entity.Course;
+import com.supnum.tp.entity.Student;
+import com.supnum.tp.repository.CourseRepository;
+import com.supnum.tp.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
