@@ -1,4 +1,4 @@
-package com.supnum.tp;
+package com.supnum.tp.controller;
 
 import com.supnum.tp.model.User;
 import com.supnum.tp.repository.UserRepository;

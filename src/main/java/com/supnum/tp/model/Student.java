@@ -1,4 +1,4 @@
-package com.supnum.tp;
+package com.supnum.tp.model;
 
 import java.util.List;
 

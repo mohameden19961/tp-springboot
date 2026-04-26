@@ -1,4 +1,4 @@
-package com.supnum.tp;
+package com.supnum.tp.dto;
 // Classe DTO (Data Transfer Object) pour représenter 
 // les données d'un étudiant lors de la création ou de la mise à jour
 public class StudentDTO {

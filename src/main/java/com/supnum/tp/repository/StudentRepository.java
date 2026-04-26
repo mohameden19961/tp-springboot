@@ -1,4 +1,6 @@
-package com.supnum.tp;
+package com.supnum.tp.repository;
+
+import com.supnum.tp.model.Student;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.domain.Page;

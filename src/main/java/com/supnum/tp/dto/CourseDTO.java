@@ -1,4 +1,4 @@
-package com.supnum.tp;
+package com.supnum.tp.dto;
 
 public class CourseDTO {
     private String title;

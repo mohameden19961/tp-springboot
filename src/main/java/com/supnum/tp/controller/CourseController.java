@@ -1,4 +1,11 @@
-package com.supnum.tp;
+package com.supnum.tp.controller;
+
+import com.supnum.tp.model.Student;
+import com.supnum.tp.model.Course;
+import com.supnum.tp.repository.StudentRepository;
+import com.supnum.tp.repository.CourseRepository;
+import com.supnum.tp.dto.CourseDTO;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
