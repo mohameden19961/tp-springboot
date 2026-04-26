@@ -1,0 +1,40 @@
+TP SPRING BOOT : SYSTÈME DE GESTION DES ÉTUDIANTS ET COURS SÉCURISÉ
+
+OBJECTIF : 
+Développer une application backend avec Spring Boot permettant de gérer un établissement scolaire. L'accent doit être mis sur l'architecture logicielle, la persistance des données et la sécurité avancée.
+
+PARTIE 1 : ARCHITECTURE ET DONNÉES
+1. Structurez votre code en respectant le pattern Layered Architecture :
+   - Controller (Gestion HTTP)
+   - Service (Logique métier)
+   - Repository (Accès aux données)
+   - Model/Entity (Objets JPA)
+   - DTO (Transfert de données)
+
+2. Modèle de données :
+   - Étudiant (id, nom, email, courses, createdBy)
+   - Cours (id, titre, createdBy)
+   - Établissez une relation Many-To-Many entre Étudiant et Cours (Inscriptions).
+
+PARTIE 2 : SÉCURITÉ (SPRING SECURITY)
+1. Implémentez l'authentification OAuth2 via Google.
+2. Après l'authentification, générez et distribuez un token JWT (Access Token & Refresh Token).
+3. Gérez la révocation des tokens en les stockant dans une base de données.
+4. Définissez les rôles suivants :
+   - Rôle ADMIN (ex: 24068@supnum.mr) : accès total à toutes les ressources.
+   - Rôle USER : accès uniquement à ses propres créations.
+
+PARTIE 3 : FONCTIONNALITÉS API (REST)
+Implémentez les endpoints suivants :
+- Gestion des Étudiants : Liste (filtrée par utilisateur), Création, Modification, Suppression (Admin), Recherche et Pagination.
+- Gestion des Cours : Liste, Création, Modification, Recherche.
+- Inscriptions : Permettre d'inscrire un étudiant à un cours.
+- Statistiques : Lister les étudiants inscrits à un cours spécifique.
+
+CONTRÔLE D'ACCÈS (BUSINESS LOGIC) :
+Un utilisateur ne doit pouvoir voir, modifier ou inscrire que les étudiants/cours qu'il a lui-même créés (vérification du champ 'createdBy'). Seul l'administrateur peut outrepasser cette règle.
+
+LIVRABLES :
+- Code source complet sur GitHub.
+- Fichier README détaillé avec documentation API et procédure d'installation.
+- Base de données configurée (MySQL).
