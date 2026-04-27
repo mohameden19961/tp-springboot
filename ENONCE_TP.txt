@@ -38,3 +38,4 @@ LIVRABLES :
 - Code source complet sur GitHub.
 - Fichier README détaillé avec documentation API et procédure d'installation.
 - Base de données configurée (MySQL).
+abdy mohameden
