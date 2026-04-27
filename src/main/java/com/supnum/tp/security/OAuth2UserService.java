@@ -26,10 +26,20 @@ public class OAuth2UserService extends DefaultOAuth2UserService {
         User user = userRepository.findByEmail(email).orElse(new User());
         user.setEmail(email);
         user.setName(name);
-        user.setPicture(pic);
-        String role = "24068@supnum.mr".equals(email) ? "ADMIN" : "USER";
-        user.setRole(role);
+        if (pic != null) {
+            user.setPicture(pic);
+        }
+        
+        // On ne change le rôle que si c'est un nouvel utilisateur ou si on force l'admin
+        if (user.getRole() == null) {
+            String role = "24068@supnum.mr".equals(email) ? "ADMIN" : "STUDENT";
+            user.setRole(role);
+        } else if ("24068@supnum.mr".equals(email)) {
+             user.setRole("ADMIN"); // S'assure que l'admin garde ses droits
+        }
+        
         userRepository.save(user);
+
 
         return oAuth2User;
     }

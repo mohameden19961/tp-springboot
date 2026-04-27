@@ -45,25 +45,29 @@ public class JwtFilter extends OncePerRequestFilter {
                 .orElse(null);
         }
 
-        if (jwt != null) {
-            // VERIFICATION EN BDD : Est-ce que le token est présent et valide ?
-            boolean isTokenInDb = tokenRepository.findByTokenAndValidTrue(jwt).isPresent();
-            
-            if (isTokenInDb && SecurityContextHolder.getContext().getAuthentication() == null) {
-                // Utilise extractEmail et isTokenValid (qui existent dans JwtService.java)
-                if (jwtService.isTokenValid(jwt)) {
-                    String email = jwtService.extractEmail(jwt);
-                    String role  = jwtService.extractRole(jwt);
+        if (jwt != null && !jwt.isEmpty() && !"null".equals(jwt) && !"undefined".equals(jwt)) {
+            try {
+                // VERIFICATION EN BDD : Est-ce que le token est présent et valide ?
+                boolean isTokenInDb = tokenRepository.findByTokenAndValidTrue(jwt).isPresent();
+                
+                if (isTokenInDb && SecurityContextHolder.getContext().getAuthentication() == null) {
+                    if (jwtService.isTokenValid(jwt)) {
+                        String email = jwtService.extractEmail(jwt);
+                        String role  = jwtService.extractRole(jwt);
 
-                    if (email != null) {
-                        UsernamePasswordAuthenticationToken auth =
-                            new UsernamePasswordAuthenticationToken(
-                                email, null,
-                                List.of(new SimpleGrantedAuthority("ROLE_" + role))
-                            );
-                        SecurityContextHolder.getContext().setAuthentication(auth);
+                        if (email != null) {
+                            UsernamePasswordAuthenticationToken auth =
+                                new UsernamePasswordAuthenticationToken(
+                                    email, null,
+                                    List.of(new SimpleGrantedAuthority("ROLE_" + role))
+                                );
+                            SecurityContextHolder.getContext().setAuthentication(auth);
+                        }
                     }
                 }
+            } catch (Exception e) {
+                // Si le token est corrompu, on l'ignore silencieusement
+                System.out.println("Token ignoré : " + e.getMessage());
             }
         }
 

@@ -39,8 +39,12 @@ public class OAuth2SuccessHandler implements AuthenticationSuccessHandler {
         user.setEmail(email);
         user.setName(name);
         user.setPicture(picture);
-        String role = "24068@supnum.mr".equals(email) ? "ADMIN" : "USER";
-        user.setRole(role);
+        if (user.getRole() == null) {
+            String role = "24068@supnum.mr".equals(email) ? "ADMIN" : "STUDENT";
+            user.setRole(role);
+        } else if ("24068@supnum.mr".equals(email)) {
+            user.setRole("ADMIN");
+        }
         userRepository.save(user);
 
         // Nettoyer les anciens tokens
@@ -67,7 +71,7 @@ public class OAuth2SuccessHandler implements AuthenticationSuccessHandler {
         jwtCookie.setMaxAge(60 * 15);
         response.addCookie(jwtCookie);
 
-        // Rediriger vers l'endpoint qui affiche les tokens en JSON
-        response.sendRedirect("/api/auth/token");
+        // Rediriger vers le dashboard frontend après succès
+        response.sendRedirect("http://localhost:3000/dashboard");
     }
 }

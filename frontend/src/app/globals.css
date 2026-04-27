@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+:root {
+  --background: #060608;
+  --foreground: #ffffff;
+  --primary: #6366f1;
+  --secondary: #a855f7;
+  --accent: #ec4899;
+}
+
+.light-theme {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --primary: #4f46e5;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.light-theme body {
+  background: #f8fafc;
+  background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+@layer utilities {
+  .glass {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .light-theme .glass {
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+  }
+  
+  .glass-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  }
+
+  .light-theme .glass-card {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+  }
+
+  .text-gradient {
+    background: linear-gradient(to right, #6366f1, #a855f7, #ec4899);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+.custom-quill-container .ql-toolbar {
+  background-color: #f4f4f5;
+  border: none !important;
+  border-bottom: 1px solid #e4e4e7 !important;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+.custom-quill-container .ql-container {
+  border: none !important;
+  font-family: inherit !important;
+  font-size: 1rem !important;
+}
+.custom-quill-container .ql-editor {
+  min-height: 100px;
+}
+.formatted-content h1 { @apply text-2xl font-black mb-4; }
+.formatted-content h2 { @apply text-xl font-black mb-3; }
+.formatted-content p { @apply mb-2; }
+.formatted-content ul { @apply list-disc pl-5 mb-2; }
+.formatted-content ol { @apply list-decimal pl-5 mb-2; }
+.formatted-content strong { @apply text-white font-black; }

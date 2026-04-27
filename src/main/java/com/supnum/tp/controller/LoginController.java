@@ -51,7 +51,13 @@ public class LoginController {
             return Map.of(
                 "access_token", accessToken,
                 "refresh_token", refreshToken,
-                "user", Map.of("name", user.getName(), "email", user.getEmail())
+                "user", Map.of(
+                    "id", user.getId(),
+                    "name", user.getName(), 
+                    "email", user.getEmail(),
+                    "picture", user.getPicture() != null ? user.getPicture() : "",
+                    "role", user.getRole()
+                )
             );
         } catch (Exception e) {
             return Map.of("error", "Erreur: " + e.getMessage());
